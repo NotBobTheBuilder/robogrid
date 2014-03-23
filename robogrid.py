@@ -6,10 +6,10 @@ class Robot(object):
         pass
 
     def right(self):
-        self.heading += 90
+        self.heading += 1
 
     def left(self):
-        self.heading -= 90
+        self.heading -= 1
 
     @property
     def heading(self):
@@ -17,4 +17,4 @@ class Robot(object):
 
     @heading.setter
     def heading(self, val):
-        self._heading = val % 360
+        self._heading = val % 4
