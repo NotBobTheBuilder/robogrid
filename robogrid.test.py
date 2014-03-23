@@ -13,5 +13,17 @@ class Test_Robot(unittest.TestCase):
         r.right()
         self.assertEqual(0, r.heading)
 
+    def test_basic_movement(self):
+        r = Robot("Tesla")
+        start = r.y
+        r.forward()
+        self.assertEqual(start - 1, r.y)
+
+        start = r.x
+        r.left()
+        r.forward()
+        self.assertEqual(start - 1, r.x)
+
+
 if __name__ == "__main__":
     unittest.main()
