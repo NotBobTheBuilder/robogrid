@@ -15,14 +15,14 @@ class Test_Robot(unittest.TestCase):
 
     def test_basic_movement(self):
         r = Robot("Tesla")
-        start = r.y
+        x, y = r.pos
         r.forward()
-        self.assertEqual(start - 1, r.y)
+        self.assertEqual((x, y - 1), r.pos)
 
-        start = r.x
+        x, y = r.pos
         r.left()
         r.forward()
-        self.assertEqual(start - 1, r.x)
+        self.assertEqual((x - 1, y), r.pos)
 
 
 if __name__ == "__main__":

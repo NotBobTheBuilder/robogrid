@@ -1,18 +1,18 @@
 class Robot(object):
     def __init__(self, name):
         self._heading = 0
-        self.x = 0
-        self.y = 0
+        self._x = 0
+        self._y = 0
 
     def forward(self):
         if self.heading == 0:
-            self.y -= 1
+            self._y -= 1
         elif self.heading == 1:
-            self.x += 1
+            self._x += 1
         elif self.heading == 2:
-            self.y += 1
+            self._y += 1
         elif self.heading == 3:
-            self.x -= 1
+            self._x -= 1
 
     def right(self):
         self.heading += 1
@@ -27,3 +27,15 @@ class Robot(object):
     @heading.setter
     def heading(self, val):
         self._heading = val % 4
+
+    @property
+    def x(self):
+        return self._x
+
+    @property
+    def y(self):
+        return self._y
+
+    @property
+    def pos(self):
+        return self.x, self.y
