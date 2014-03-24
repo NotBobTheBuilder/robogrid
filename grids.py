@@ -5,11 +5,13 @@ class Grid(dict):
             for col_index, cell in enumerate(row):
                 self[(row_index, col_index)] = cell
 
+    def __iter__(self):
+        for row in range(self.height):
+            yield [self[row, col] for col in range(self.width)]
+
     def __str__(self):
-        return "\n".join("".join("#" if self[row, col] else "+"
-                             for col in range(self.width))
-                             for row in range(self.height)
-                        )
+        char = lambda state: "#" if state else "."
+        return "\n".join("".join(char(col) for col in row) for row in self)
 
     def free_position(self):
         for x in range(self.width):
