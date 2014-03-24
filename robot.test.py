@@ -24,6 +24,11 @@ class Test_Robot(unittest.TestCase):
         r.forward()
         self.assertEqual((x - 1, y), r.pos)
 
+    def test_simple_grid(self):
+        r = Robot("Tesla", Simple_Grid(3))
+        pos = r.x, r.y
+        r.forward()
+        self.assertEqual(pos, r.pos)
 
 if __name__ == "__main__":
     unittest.main()
