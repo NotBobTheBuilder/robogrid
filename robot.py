@@ -15,13 +15,17 @@ class Robot(object):
 
     def forward(self):
         if self.heading == 0:
-            self._y -= 1
+            if self.grid[self.x, self.y-1] == False:
+                self._y -= 1
         elif self.heading == 1:
-            self._x += 1
+            if self.grid[self.x+1, self.y] == False:
+                self._x += 1
         elif self.heading == 2:
-            self._y += 1
+            if self.grid[self.x, self.y+1] == False:
+                self._y += 1
         elif self.heading == 3:
-            self._x -= 1
+            if self.grid[self.x-1, self.y] == False:
+                self._x -= 1
 
     def right(self):
         self.heading += 1
