@@ -10,8 +10,10 @@ class Grid(dict):
             yield [self[row, col] for col in range(self.width)]
 
     def __str__(self):
-        char = lambda state: "#" if state else "."
-        return "\n".join("".join(char(col) for col in row) for row in self)
+        return "\n".join("".join(self.char(col) for col in row) for row in self)
+
+    def char(self, state):
+        return "#" if state else "."
 
     def free_position(self):
         for x in range(self.width):
