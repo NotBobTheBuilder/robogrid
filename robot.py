@@ -27,6 +27,13 @@ class Robot(object):
             if self.grid[self.x-1, self.y] == False:
                 self._x -= 1
 
+    def backward(self):
+        self.right()
+        self.right()
+        self.forward()
+        self.right()
+        self.right()
+
     def right(self):
         self.heading += 1
 
