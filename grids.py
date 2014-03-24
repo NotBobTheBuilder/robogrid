@@ -35,11 +35,3 @@ class Simple_Grid(Grid):
             grid.append([i == 0 or i == size-1 for i in range(size)])
         grid.append(border)
         return grid
-
-class Infinite_Grid(Grid):
-    def __init__(self):
-        self.width  = 1
-        self.height = 1
-
-    def __getitem__(self, index):
-        return False

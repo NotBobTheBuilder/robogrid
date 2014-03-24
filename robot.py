@@ -1,9 +1,9 @@
-from grids import Infinite_Grid
+from grids import Simple_Grid
 
 class Robot(object):
     def __init__(self, name, grid=None):
         if grid == None:
-            grid = Infinite_Grid()
+            grid = Simple_Grid(20)
         self.grid = grid
 
         start_pos = self.grid.free_position()
