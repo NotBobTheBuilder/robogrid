@@ -13,6 +13,18 @@ class Robot(object):
         self._heading = 0
         self._x, self._y = start_pos
 
+    def __str__(self):
+        arrow = "^>!<"[self.heading]
+        result = ""
+        for row_i, row in enumerate(self.grid):
+            for col_i, cell in enumerate(row):
+                if (row_i, col_i) == self.pos:
+                    result += arrow
+                else:
+                    result += self.grid.char(cell)
+            result += "\n"
+        return result
+
     def forward(self):
         if self.heading == 0:
             if self.grid[self.x, self.y-1] == False:
