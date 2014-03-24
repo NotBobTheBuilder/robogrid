@@ -2,6 +2,8 @@ from grids import Simple_Grid
 
 class Robot(object):
     def __init__(self, name, grid=None):
+        self.name = name
+
         if grid == None:
             grid = Simple_Grid(20)
         self.grid = grid
@@ -12,6 +14,14 @@ class Robot(object):
 
         self._heading = 0
         self._x, self._y = start_pos
+
+    def __repr__(self):
+        summary = {
+            "name": self.name,
+            "w": self.grid.width,
+            "h": self.grid.height
+        }
+        return 'Robot("{name}", <Grid of size {w}x{h}>)'.format(**summary)
 
     def __str__(self):
         arrow = "^>!<"[self.heading]
