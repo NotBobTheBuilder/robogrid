@@ -39,6 +39,16 @@ class Robot(object):
             if self.grid[self.x-1, self.y] == False:
                 self._x -= 1
 
+    def can_move_forward(self):
+        if self.heading == 0:
+            return self.grid[self.x, self.y-1] == False
+        elif self.heading == 1:
+            return self.grid[self.x+1, self.y] == False
+        elif self.heading == 2:
+            return self.grid[self.x, self.y+1] == False
+        elif self.heading == 3:
+            return self.grid[self.x-1, self.y] == False
+
     def backward(self):
         self.right()
         self.right()

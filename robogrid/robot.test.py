@@ -16,6 +16,14 @@ class Test_Robot(unittest.TestCase):
 
     def test_basic_movement(self):
         r = Robot("Tesla")
+
+        for i in range(2):
+            r.right()
+            r.forward()
+
+        r.right()
+        r.right()
+
         x, y = r.pos
         r.forward()
         self.assertEqual((x, y - 1), r.pos)
@@ -35,5 +43,12 @@ class Test_Robot(unittest.TestCase):
         r.forward()
         self.assertEqual(pos, r.pos)
 
+    def test_move_forward_check(self):
+        r = Robot("Tesla", Simple_Grid(3))
+        self.assertEqual(False, r.can_move_forward())
+
+        r = Robot("Tesla", Simple_Grid(5))
+        r.right()
+        self.assertEqual(True, r.can_move_forward())
 if __name__ == "__main__":
     unittest.main()
