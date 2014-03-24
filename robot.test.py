@@ -1,6 +1,7 @@
 import unittest
 
 from robot import Robot
+from grids import Simple_Grid
 
 class Test_Robot(unittest.TestCase):
     def test_basic_turning(self):
@@ -27,6 +28,10 @@ class Test_Robot(unittest.TestCase):
     def test_simple_grid(self):
         r = Robot("Tesla", Simple_Grid(3))
         pos = r.x, r.y
+        r.forward()
+        self.assertEqual(pos, r.pos)
+        r.backward()
+        r.left()
         r.forward()
         self.assertEqual(pos, r.pos)
 
