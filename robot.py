@@ -1,8 +1,17 @@
+from grids import Infinite_Grid
+
 class Robot(object):
-    def __init__(self, name):
+    def __init__(self, name, grid=None):
+        if grid == None:
+            grid = Infinite_Grid()
+        self.grid = grid
+
+        start_pos = self.grid.free_position()
+        if start_pos == None:
+            raise ValueError("No space in proposed grid")
+
         self._heading = 0
-        self._x = 0
-        self._y = 0
+        self._x, self._y = start_pos
 
     def forward(self):
         if self.heading == 0:
