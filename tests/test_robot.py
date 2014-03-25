@@ -1,7 +1,7 @@
 import unittest
 
-from robot import Robot
-from grids import Simple_Grid
+from robogrid.robot import Robot
+from robogrid.grids import Simple_Grid
 
 class Test_Robot(unittest.TestCase):
     def test_basic_turning(self):
