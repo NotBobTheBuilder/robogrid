@@ -1,6 +1,6 @@
 import unittest
 
-from robogrid.robot import Robot
+from robogrid import Robot
 from robogrid.grids import Simple_Grid
 
 class Test_Robot(unittest.TestCase):
