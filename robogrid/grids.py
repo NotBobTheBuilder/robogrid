@@ -24,14 +24,42 @@ class Grid(dict):
 
 class Simple_Grid(Grid):
     def __init__(self, size):
-        grid = self.bordered_grid(size)
-        super(Simple_Grid, self).__init__(grid)
+        super(type(self), self).__init__(make_grid(size, False))
 
-    def bordered_grid(self, size):
-        grid = []
-        border = [True] * size
-        grid.append(border)
-        for i in range(size - 2):
-            grid.append([i == 0 or i == size-1 for i in range(size)])
-        grid.append(border)
-        return grid
+class Maze(Grid):
+    def __init__(self, size):
+        if size < 5:
+            raise ValueError("Grid size must be >= 5 to make a maze")
+        super(type(self), self).__init__(make_grid(size, pattern_s_maze))
+
+def make_grid(size, contents=None):
+    if callable(contents):
+        value_func = contents
+    else:
+        contents = True if contents == None else contents
+        value_func = lambda x, y, size: contents
+
+    f = cell_value(size, value_func)
+    return [[f(x, y) for x in range(size)] for y in range(size)]
+
+def cell_value(size, value_func):
+    def cell_value_inner(x, y):
+        if border(x, y, size):
+            return True
+        return value_func(x, y, size)
+    return cell_value_inner
+
+def border(x, y, size):
+    return x == 0 or y == 0 or x == size - 1 or y == size - 1
+
+def pattern_s_maze(x, y, size):
+    if x % 2 == 1:
+        return False
+
+    if y == 1:
+        return x in range(2, size + 1, 4)
+    elif y == size - 2:
+        return x in range(0, size + 1, 4)
+
+
+    return True
