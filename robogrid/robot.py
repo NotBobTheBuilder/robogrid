@@ -1,4 +1,4 @@
-from grids import Simple_Grid
+from .grids import Simple_Grid
 
 class Robot(object):
     def __init__(self, name, grid=None):
