@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="robogrid",
-    version="0.5.0",
+    version="0.5.2",
     description="A robot simulator for rectangular grids and mazes",
     url="https://github.com/NotBobTheBuilder/robogrid",
     author="Jack Wearden",
