@@ -7,7 +7,7 @@ class Grid(dict):
 
     def __iter__(self):
         for row in range(self.height):
-            yield [self[row, col] for col in range(self.width)]
+            yield [self[col, row] for col in range(self.width)]
 
     def __repr__(self):
         return "<Grid of size {w}x{h}>".format(w=self.width,

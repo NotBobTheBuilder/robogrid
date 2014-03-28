@@ -27,7 +27,7 @@ class Robot(object):
         result = ""
         for row_i, row in enumerate(self.grid):
             for col_i, cell in enumerate(row):
-                if (row_i, col_i) == self.pos:
+                if (col_i, row_i) == self.pos:
                     result += arrow
                 else:
                     result += self.grid.char(cell)
