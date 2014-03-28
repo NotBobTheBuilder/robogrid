@@ -18,10 +18,9 @@ class Robot(object):
     def __repr__(self):
         summary = {
             "name": self.name,
-            "w": self.grid.width,
-            "h": self.grid.height
+            "grid": repr(self.grid)
         }
-        return 'Robot("{name}", <Grid of size {w}x{h}>)'.format(**summary)
+        return 'Robot("{name}", {grid})'.format(**summary)
 
     def __str__(self):
         arrow = "^>!<"[self.heading]

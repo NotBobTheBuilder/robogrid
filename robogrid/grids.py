@@ -9,6 +9,10 @@ class Grid(dict):
         for row in range(self.height):
             yield [self[row, col] for col in range(self.width)]
 
+    def __repr__(self):
+        return "<Grid of size {w}x{h}>".format(w=self.width,
+                                               h=self.height)
+
     def __str__(self):
         return "\n".join("".join(self.char(col) for col in row) for row in self)
 
