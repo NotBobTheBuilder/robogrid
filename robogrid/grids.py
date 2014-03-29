@@ -3,7 +3,7 @@ class Grid(dict):
         self.width, self.height = len(grid), len(grid[0])
         for row_index, row in enumerate(grid):
             for col_index, cell in enumerate(row):
-                self[(row_index, col_index)] = cell
+                self[(col_index, row_index)] = cell
 
     def __iter__(self):
         for row in range(self.height):
