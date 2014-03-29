@@ -50,5 +50,3 @@ class Test_Robot(unittest.TestCase):
         r = Robot("Tesla", Simple_Grid(5))
         r.right()
         self.assertEqual(True, r.can_move_forward())
-if __name__ == "__main__":
-    unittest.main()
