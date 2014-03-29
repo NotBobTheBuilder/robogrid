@@ -91,7 +91,5 @@ class Robot(object):
     def pos(self):
         return self.x, self.y
 
-    def isFinished(self):
-        if self.x == self.grid.width - 2 and self.y == self.grid.height - 2:
-            return True
-        return False
+    def is_finished(self):
+        return self.x == self.grid.width - 2 and self.y == self.grid.height - 2
