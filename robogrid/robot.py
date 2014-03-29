@@ -23,7 +23,7 @@ class Robot(object):
         return 'Robot("{name}", {grid})'.format(**summary)
 
     def __str__(self):
-        arrow = "^>!<"[self.heading]
+        arrow = "^>v<"[self.heading]
         result = ""
         for row_i, row in enumerate(self.grid):
             for col_i, cell in enumerate(row):
@@ -90,3 +90,8 @@ class Robot(object):
     @property
     def pos(self):
         return self.x, self.y
+
+    def isFinished(self):
+        if self.x == self.grid.width - 2 and self.y == self.grid.height - 2:
+            return True
+        return False
