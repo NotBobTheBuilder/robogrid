@@ -35,28 +35,28 @@ class Robot(object):
         return result
 
     def forward(self):
+        if not self.can_move_forward():
+            return
+
         if self.heading == 0:
-            if self.grid[self.x, self.y-1] == False:
-                self._y -= 1
+            self._y -= 1
         elif self.heading == 1:
-            if self.grid[self.x+1, self.y] == False:
-                self._x += 1
+            self._x += 1
         elif self.heading == 2:
-            if self.grid[self.x, self.y+1] == False:
-                self._y += 1
+            self._y += 1
         elif self.heading == 3:
-            if self.grid[self.x-1, self.y] == False:
-                self._x -= 1
+            self._x -= 1
 
     def can_move_forward(self):
-        if self.heading == 0:
-            return self.grid[self.x, self.y-1] == False
-        elif self.heading == 1:
-            return self.grid[self.x+1, self.y] == False
-        elif self.heading == 2:
-            return self.grid[self.x, self.y+1] == False
-        elif self.heading == 3:
-            return self.grid[self.x-1, self.y] == False
+        return not self.cell_at_heading_blocked()
+
+    def cell_at_heading_blocked(self, heading=None):
+        return {
+            0: self.grid[self.x,   self.y-1],
+            1: self.grid[self.x+1, self.y],
+            2: self.grid[self.x,   self.y+1],
+            3: self.grid[self.x-1, self.y],
+        }[heading or self.heading]
 
     def backward(self):
         self.right()
@@ -92,4 +92,4 @@ class Robot(object):
         return self.x, self.y
 
     def is_finished(self):
-        return self.x == self.grid.width - 2 and self.y == self.grid.height - 2
+        return self.x, self.y == self.grid.width - 2, self.grid.height - 2
