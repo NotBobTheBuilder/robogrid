@@ -17,3 +17,13 @@ class Test_Grids(unittest.TestCase):
         self.assertEqual((1, 1), grid.free_position())
         grid = Simple_Grid(2)
         self.assertEqual(None, grid.free_position())
+
+    def test_creation_from_string(self):
+        grid = Grid("""
+###
+...
+###
+""")
+        self.assertEqual(False, grid[(1, 1)])
+        self.assertEqual(True, grid[(0,0)])
+        self.assertEqual(True, grid[(1, 0)])
