@@ -22,10 +22,10 @@ class Grid(dict):
                                                h=self.height)
 
     def __str__(self):
-        return "\n".join("".join(self.char(col) for col in row) for row in self)
+        return "\n".join("".join(self.char(cell) for cell in row) for row in self)
 
-    def char(self, state):
-        return "#" if state else "."
+    def char(self, cell):
+        return "#" if cell else "."
 
     def free_position(self):
         for x in range(self.width):
