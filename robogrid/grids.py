@@ -1,9 +1,17 @@
 class Grid(dict):
-    def __init__(self, grid):
-        self.width, self.height = len(grid), len(grid[0])
-        for row_index, row in enumerate(grid):
-            for col_index, cell in enumerate(row):
-                self[(col_index, row_index)] = cell
+    def __init__(self, _grid):
+        if type(_grid) == str:
+            # discard blank lines (so any initial & final newlines ignored)
+            _grid = filter(lambda row: len(row) > 0, _grid.split('\n'))
+            # Empty cells represented by ".", everything else means full
+            grid = [[cell != "." for cell in row] for row in _grid]
+        else:
+            grid = _grid
+
+        self.width, self.height = len(grid[0]), len(grid)
+        for y_index, row in enumerate(grid):
+            for x_index, cell in enumerate(row):
+                self[(x_index, y_index)] = cell
 
     def __iter__(self):
         for row in range(self.height):
@@ -14,10 +22,10 @@ class Grid(dict):
                                                h=self.height)
 
     def __str__(self):
-        return "\n".join("".join(self.char(col) for col in row) for row in self)
+        return "\n".join("".join(self.char(cell) for cell in row) for row in self)
 
-    def char(self, state):
-        return "#" if state else "."
+    def char(self, cell):
+        return "#" if cell else "."
 
     def free_position(self):
         for x in range(self.width):
